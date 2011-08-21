@@ -1,5 +1,9 @@
 # OrientDB Graph Database Adapter for Pacer
 
+*Note:* The Pacer test suite does not pass with this graph adapter,
+therefore this adapter is currently only experimental. Graphs with fully
+passing test suites currently include TinkerGraph, Neo4j and Dex.
+
 [Pacer](https://github.com/pangloss/pacer) is a
 [JRuby](http://jruby.org) graph traversal framework built on the
 [Tinkerpop](http://www.tinkerpop.com) stack.
