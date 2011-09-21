@@ -8,11 +8,11 @@ Gem::Specification.new do |s|
   s.platform    = 'jruby'
   s.authors     = ["Paul Dlug"]
   s.email       = ["paul.dlug@gmail.com"]
-  s.homepage    = "http://http://www.orientechnologies.com/"
+  s.homepage    = "http://www.orientechnologies.com/"
   s.summary     = %q{OrientDB jars and related code for Pacer}
   s.description = s.summary
 
-  s.add_dependency 'pacer'
+  s.add_dependency 'pacer', ">= 0.8.5"
 
   s.rubyforge_project = "pacer-orient"
 

@@ -23,10 +23,12 @@ module Pacer
   # Extend the java class imported from blueprints.
   class OrientGraph
     include GraphMixin
+    include GraphIndicesMixin
     include GraphTransactionsMixin
     include ManagedTransactionsMixin
     include Pacer::Core::Route
     include Pacer::Core::Graph::GraphRoute
+    include Pacer::Core::Graph::GraphIndexRoute
 
     # Override to return an enumeration-friendly array of vertices.
     def get_vertices
@@ -38,32 +40,16 @@ module Pacer
       getEdges.to_route(:graph => self, :element_type => :edge)
     end
 
-    def element_type(et = nil)
-      return nil unless et
-      if et == OrientVertex or et == OrientEdge or et == OrientElement
-        et
-      else
-        case et
-        when :vertex, com.tinkerpop.blueprints.pgm.Vertex, VertexMixin
-          OrientVertex
-        when :edge, com.tinkerpop.blueprints.pgm.Edge, EdgeMixin
-          OrientEdge
-        when :mixed, com.tinkerpop.blueprints.pgm.Element, ElementMixin
-          OrientElement
-        when :object
-          Object
-        else
-          if et == Object
-            Object
-          elsif et == OrientVertex.java_class.to_java
-            OrientVertex
-          elsif et == OrientEdge.java_class.to_java
-            OrientEdge
-          else
-            raise ArgumentError, 'Element type may be one of :vertex or :edge'
-          end
-        end
-      end
+    def element_class
+      OrientElement
+    end
+
+    def vertex_class
+      OrientVertex
+    end
+
+    def edge_class
+      OrientEdge
     end
 
     def sanitize_properties(props)
