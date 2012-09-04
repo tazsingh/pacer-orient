@@ -29,6 +29,4 @@ class Rspec::GraphRunner
       @orient_graph_no_indices
     end
   end
-
-  include Orient
 end
