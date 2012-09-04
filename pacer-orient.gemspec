@@ -5,7 +5,7 @@ require "pacer-orient/version"
 Gem::Specification.new do |s|
   s.name        = "pacer-orient"
   s.version     = Pacer::Orient::VERSION
-  s.platform    = 'jruby'
+  s.platform    = 'java'
   s.authors     = ["Paul Dlug"]
   s.email       = ["paul.dlug@gmail.com"]
   s.homepage    = "http://www.orientechnologies.com/"
