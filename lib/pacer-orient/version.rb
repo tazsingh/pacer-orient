@@ -1,6 +1,6 @@
 module Pacer
   module Orient
-    VERSION = "2.0.0"
+    VERSION = "2.0.1"
     JAR = "pacer-orient-#{ VERSION }-standalone.jar"
     JAR_PATH = "lib/#{ JAR }"
     BLUEPRINTS_VERSION = "2.1.0"
