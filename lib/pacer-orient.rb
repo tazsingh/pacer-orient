@@ -1,7 +1,12 @@
+lib_path = File.expand_path(File.join(File.dirname(__FILE__), '../lib'))
+$:.unshift lib_path unless $:.any? { |path| path == lib_path }
+
+require 'pacer' unless defined? Pacer
 require 'pacer-orient/version'
 
-require 'pacer'
 require Pacer::Orient::JAR
+
+require 'pacer-orient/encoder'
 
 module Pacer
   class << self
@@ -38,7 +43,7 @@ module Pacer
         g.blueprints_graph.shutdown
         Pacer.open_graphs[[url, username]] = nil
       end
-      PacerGraph.new(Pacer::YamlEncoder, open, shutdown)
+      PacerGraph.new(Pacer::Orient::Encoder, open, shutdown)
     end
 
     private
