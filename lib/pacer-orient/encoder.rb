@@ -1,13 +1,8 @@
+require 'java'
+
 module Pacer::Orient
   class Encoder
     JavaDate = java.util.Date
-
-    def self.sanitize_properties(props)
-      pairs = props.map do |name, value|
-        [name, encode_property(value)]
-      end
-      Hash[pairs]
-    end
 
     def self.encode_property(value)
       case value
