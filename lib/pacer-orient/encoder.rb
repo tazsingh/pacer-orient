@@ -16,10 +16,10 @@ module Pacer::Orient
         if value.is_a? Bignum
           Marshal.dump(value).to_java_bytes
         else
-          value
+          value.to_java
         end
       when true, false
-        value
+        value.to_java
       when JavaDate, Date, Time, DateTime
         value
       else
