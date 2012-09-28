@@ -41,7 +41,7 @@ module Pacer
       end
       shutdown = proc do |g|
         g.blueprints_graph.shutdown
-        Pacer.open_graphs[[url, username]] = nil
+        Pacer.open_graphs.delete [url, username]
       end
       PacerGraph.new(Pacer::Orient::Encoder, open, shutdown)
     end
