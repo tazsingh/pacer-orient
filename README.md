@@ -1,34 +1,43 @@
 # OrientDB Graph Database Adapter for Pacer
 
-*Note:* The Pacer test suite does not pass with this graph adapter,
-therefore this adapter is currently only experimental. Graphs with fully
-passing test suites currently include TinkerGraph, Neo4j and Dex.
+[OrientDB](http://http://www.orientechnologies.com/) is an excellent,
+fast graph distribution. It's fully supported by
+[Pacer](https://github.com/pangloss/pacer)'s standard graph features and
+passes the full Pacer test suite.  This plugin also includes a default
+property value encoder that takes advantage of Orient's unique ability
+to support binary data, which may make Orient an excellent option for
+projects which may store more complex or structured data within
+properties on graph elements.
 
-[Pacer](https://github.com/pangloss/pacer) is a
-[JRuby](http://jruby.org) graph traversal framework built on the
+Pacer is built using [JRuby](http://jruby.org) on the excellent
 [Tinkerpop](http://www.tinkerpop.com) stack.
-
-This plugin enables full
-[OrientDB](http://http://www.orientechnologies.com/) graph support in Pacer.
-
 
 ## Usage
 
-Here is how you open a OrientDB graph in Pacer.
+OrientDB has 3 modes of operation: embedded, embedded in memory, and
+remote. All of them can be used independently or together and even
+together with other graph adapters.
 
   require 'pacer'
   require 'pacer-orient'
 
-  # Graph takes an OrientDB URL, e.g. disk back graph:
-  graph = Pacer.orient 'local:path/to/graph'
+  # Create or open a regular embedded local OrientDB graph
+  graph1 = Pacer.orient 'path/to/graph'
 
-  # In memory graph
-  graph = Pacer.orient 'memory:foo'
+  # Create a new in-memory graph
+  graph2 = Pacer.orient
 
-  # Remote graph
-  graph = Pacer.orient 'remote:localhost/graph', 'username', 'password'
+  # Connect to a remote graph.
+  graph3 = Pacer.orient 'remote:localhost/graph', 'username', 'password'
 
 All other operations are identical across graph implementations (except
 where certain features are not supported). See Pacer's documentation for
 more information.
 
+## Further Work
+
+* Wrap the Orient ID type to make it more useable
+* Implement specialized index support similar to pacer-neo4j
+* Implement support for Orient's SQL-like syntax (see pacer-neo4j's
+  Cypher support)
+* Orient-specific examples
