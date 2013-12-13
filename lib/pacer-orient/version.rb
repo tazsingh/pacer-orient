@@ -3,8 +3,8 @@ module Pacer
     VERSION = "2.0.1"
     JAR = "pacer-orient-#{ VERSION }-standalone.jar"
     JAR_PATH = "lib/#{ JAR }"
-    BLUEPRINTS_VERSION = "2.1.0"
-    PIPES_VERSION = "2.1.0"
+    BLUEPRINTS_VERSION = "2.4.0"
+    PIPES_VERSION = "2.4.0"
     PACER_REQ = ">= 1.0.0"
   end
 end
